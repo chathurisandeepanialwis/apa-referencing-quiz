@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APA 7th Edition Referencing Mastery Hub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#03446a',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Georgia', 'Cambria', 'Times New Roman', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- html2pdf.js for Client-Side PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        .hanging-indent {
+            padding-left: 2rem;
+            text-indent: -2rem;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body { background: white; color: black; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-brand-900 text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center py-3 md:py-0 h-auto md:h-16">
+            <div class="flex items-center space-x-3 mb-2 md:mb-0">
+                <i class="fa-solid fa-graduation-cap text-amber-400 text-2xl"></i>
+                <div>
+                    <h1 class="font-bold text-base sm:text-lg leading-tight">APA 7th Edition Referencing Suite</h1>
+                    <p class="text-[11px] text-brand-100">BEd TESL &amp; Early Childhood Research Skills Hub</p>
+                </div>
+            </div>
+            
+            <nav class="flex space-x-1 sm:space-x-2 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 text-xs sm:text-sm">
+                <button onclick="switchTab('learn')" id="tab-learn" class="tab-btn px-3 py-2 rounded-lg font-medium transition-colors bg-brand-700 text-white shadow">
+                    <i class="fa-solid fa-book-open mr-1"></i> Core Lessons
+                </button>
+                <button onclick="switchTab('activities')" id="tab-activities" class="tab-btn px-3 py-2 rounded-lg font-medium transition-colors hover:bg-brand-800 text-brand-100">
+                    <i class="fa-solid fa-list-check mr-1"></i> 4 Practice Labs
+                </button>
+                <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn px-3 py-2 rounded-lg font-medium transition-colors hover:bg-brand-800 text-brand-100">
+                    <i class="fa-solid fa-award mr-1"></i> Final Assessment
+                </button>
+                <button onclick="switchTab('pdf')" id="tab-pdf" class="tab-btn px-3 py-2 rounded-lg font-medium transition-colors hover:bg-brand-800 text-brand-100">
+                    <i class="fa-solid fa-file-pdf mr-1 text-red-300"></i> PDF Exporter
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Global Score Bar -->
+    <div class="bg-brand-800 text-white py-2 px-4 shadow-inner border-t border-brand-700">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center text-xs sm:text-sm">
+            <div class="flex items-center space-x-4">
+                <span class="font-bold text-amber-300 flex items-center">
+                    <i class="fa-solid fa-chart-line mr-1.5"></i> Progress Analytics:
+                </span>
+                <span>Act 1 (Quiz): <strong id="score-act1">0/10</strong></span>
+                <span>Act 2 (Blanks): <strong id="score-act2">0/5</strong></span>
+                <span>Act 3 (Spotter): <strong id="score-act3">0/4</strong></span>
+                <span>Act 4 (Match): <strong id="score-act4">0/4</strong></span>
+            </div>
+            <div class="font-extrabold text-amber-300 text-sm mt-1 sm:mt-0">
+                Total Score: <span id="total-score-display" class="bg-brand-900 px-2.5 py-1 rounded-md border border-brand-600">0 / 23 (0%)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- ================= TAB 1: CORE LESSONS & JARGON DECODER ================= -->
+        <section id="sec-learn" class="tab-content space-y-6">
+            <!-- Hero Card -->
+            <div class="bg-gradient-to-r from-brand-900 via-brand-800 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+                <div class="relative z-10 max-w-3xl">
+                    <span class="bg-amber-400 text-brand-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">APA 7th Edition Guide</span>
+                    <h2 class="text-2xl sm:text-3xl font-black mt-3">Mastering Citation Rules &amp; Technical Jargon</h2>
+                    <p class="mt-2 text-brand-100 text-xs sm:text-sm leading-relaxed">
+                        Learn how to format in-text citations (Parenthetical vs Narrative), credit 3+ authors with <em>et al.</em>, cite organizational bodies like WHO or UNICEF, format DOIs, and construct reference list entries for books, journal articles, and online reports.
+                    </p>
+                </div>
+                <i class="fa-solid fa-feather-pointed absolute -right-4 -bottom-4 text-brand-700 text-9xl opacity-30"></i>
+            </div>
+
+            <!-- Jargon Decoder Cards -->
+            <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                <h3 class="text-xl font-bold text-slate-900 mb-2 flex items-center">
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i> APA Technical Terms Decoder
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 mb-6">Click any card to inspect definitions, strict syntax rules, and examples.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Jargon 1 -->
+                    <div class="border border-slate-200 rounded-lg p-4 hover:border-brand-500 transition-all cursor-pointer bg-slate-50 hover:bg-brand-50" onclick="toggleJargon('j1')">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-slate-800 text-sm">Parenthetical Citation</h4>
+                            <i class="fa-solid fa-chevron-down text-slate-400 text-xs" id="icon-j1"></i>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">Author and year are completely enclosed in brackets.</p>
+                        <div id="j1" class="hidden mt-3 pt-3 border-t border-slate-200 text-xs text-slate-700 space-y-2">
+                            <p><strong>Rule:</strong> Place author surname and year in parentheses before sentence punctuation.</p>
+                            <p class="font-mono bg-white p-2 rounded border border-slate-200 text-brand-700">Example: Digital learning boosts primary vocabulary (Alwis, 2026).</p>
+                        </div>
+                    </div>
+
+                    <!-- Jargon 2 -->
+                    <div class="border border-slate-200 rounded-lg p-4 hover:border-brand-500 transition-all cursor-pointer bg-slate-50 hover:bg-brand-50" onclick="toggleJargon('j2')">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-slate-800 text-sm">Narrative Citation</h4>
+                            <i class="fa-solid fa-chevron-down text-slate-400 text-xs" id="icon-j2"></i>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">Author name forms part of the natural sentence structure.</p>
+                        <div id="j2" class="hidden mt-3 pt-3 border-t border-slate-200 text-xs text-slate-700 space-y-2">
+                            <p><strong>Rule:</strong> The author's name is incorporated into text; only the publication year stays in parentheses.</p>
+                            <p class="font-mono bg-white p-2 rounded border border-slate-200 text-brand-700">Example: Alwis (2026) observed that digital learning boosts vocabulary.</p>
+                        </div>
+                    </div>
+
+                    <!-- Jargon 3 -->
+                    <div class="border border-slate-200 rounded-lg p-4 hover:border-brand-500 transition-all cursor-pointer bg-slate-50 hover:bg-brand-50" onclick="toggleJargon('j3')">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-slate-800 text-sm">Et al. (And Others)</h4>
+                            <i class="fa-solid fa-chevron-down text-slate-400 text-xs" id="icon-j3"></i>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">Used for works with 3 or more authors.</p>
+                        <div id="j3" class="hidden mt-3 pt-3 border-t border-slate-200 text-xs text-slate-700 space-y-2">
+                            <p><strong>Rule:</strong> Abbreviation for <em>"et alia"</em>. Use "et al." from the 1st citation for 3+ authors. Put a period after <em>al.</em> but NOT after <em>et</em>.</p>
+                            <p class="font-mono bg-white p-2 rounded border border-slate-200 text-brand-700">(Silva et al., 2024)</p>
+                        </div>
+                    </div>
+
+                    <!-- Jargon 4 -->
+                    <div class="border border-slate-200 rounded-lg p-4 hover:border-brand-500 transition-all cursor-pointer bg-slate-50 hover:bg-brand-50" onclick="toggleJargon('j4')">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-slate-800 text-sm">DOI (Digital Object Identifier)</h4>
+                            <i class="fa-solid fa-chevron-down text-slate-400 text-xs" id="icon-j4"></i>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">Unique persistent URL for academic papers.</p>
+                        <div id="j4" class="hidden mt-3 pt-3 border-t border-slate-200 text-xs text-slate-700 space-y-2">
+                            <p><strong>Rule:</strong> Format DOIs strictly as standard URLs starting with <code>https://doi.org/</code>. Do not include "doi:" label or trailing full stops.</p>
+                            <p class="font-mono bg-white p-2 rounded border border-slate-200 text-brand-700">https://doi.org/10.1093/elt/ccac041</p>
+                        </div>
+                    </div>
+
+                    <!-- Jargon 5 -->
+                    <div class="border border-slate-200 rounded-lg p-4 hover:border-brand-500 transition-all cursor-pointer bg-slate-50 hover:bg-brand-50" onclick="toggleJargon('j5')">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-slate-800 text-sm">Sentence Case vs Title Case</h4>
+                            <i class="fa-solid fa-chevron-down text-slate-400 text-xs" id="icon-j5"></i>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">Capitalization rules for article vs journal titles.</p>
+                        <div id="j5" class="hidden mt-3 pt-3 border-t border-slate-200 text-xs text-slate-700 space-y-2">
+                            <p><strong>Sentence Case (Book &amp; Article titles):</strong> Capitalize only the 1st word, 1st word after a colon, and proper nouns.<br><em>Example: Teaching English: A study in Sri Lanka.</em></p>
+                            <p><strong>Title Case (Journal titles):</strong> Capitalize all major words.<br><em>Example: ELT Journal.</em></p>
+                        </div>
+                    </div>
+
+                    <!-- Jargon 6 -->
+                    <div class="border border-slate-200 rounded-lg p-4 hover:border-brand-500 transition-all cursor-pointer bg-slate-50 hover:bg-brand-50" onclick="toggleJargon('j6')">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-slate-800 text-sm">Group / Corporate Author</h4>
+                            <i class="fa-solid fa-chevron-down text-slate-400 text-xs" id="icon-j6"></i>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">Institutions (e.g., WHO, UNICEF, Ministry of Education).</p>
+                        <div id="j6" class="hidden mt-3 pt-3 border-t border-slate-200 text-xs text-slate-700 space-y-2">
+                            <p><strong>Rule:</strong> Spell out full name on 1st citation with abbreviation in brackets. Use abbreviation on subsequent citations.</p>
+                            <p class="font-mono bg-white p-2 rounded border border-slate-200 text-brand-700">1st: (World Health Organization [WHO], 2018)<br>Next: (WHO, 2018)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In-Text Citation Rules Summary -->
+            <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-brand-900 flex items-center">
+                    <i class="fa-solid fa-table text-brand-600 mr-2"></i> In-Text Citation Rules Matrix
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                        <thead>
+                            <tr class="bg-brand-900 text-white">
+                                <th class="p-3 rounded-tl-lg">Author Category</th>
+                                <th class="p-3">Parenthetical Format</th>
+                                <th class="p-3">Narrative Format</th>
+                                <th class="p-3 rounded-tr-lg">Key Syntax Rule</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-slate-50">
+                            <tr>
+                                <td class="p-3 font-semibold">1 Author</td>
+                                <td class="p-3 font-mono text-brand-700">(Cameron, 2001)</td>
+                                <td class="p-3 font-mono text-brand-700">Cameron (2001)</td>
+                                <td class="p-3 text-slate-600">Surname and year.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">2 Authors</td>
+                                <td class="p-3 font-mono text-brand-700">(Alwis &amp; Perera, 2026)</td>
+                                <td class="p-3 font-mono text-brand-700">Alwis and Perera (2026)</td>
+                                <td class="p-3 text-slate-600">Use <strong>&amp;</strong> inside parentheses; <strong>and</strong> in narrative text.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">3+ Authors</td>
+                                <td class="p-3 font-mono text-brand-700">(Silva et al., 2024)</td>
+                                <td class="p-3 font-mono text-brand-700">Silva et al. (2024)</td>
+                                <td class="p-3 text-slate-600">1st Author + <strong>et al.</strong> from 1st citation.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">Organization w/ Abbreviation</td>
+                                <td class="p-3 font-mono text-brand-700">1st: (World Health Organization [WHO], 2018)<br>Next: (WHO, 2018)</td>
+                                <td class="p-3 font-mono text-brand-700">1st: World Health Organization (WHO, 2018)<br>Next: WHO (2018)</td>
+                                <td class="p-3 text-slate-600">Introduce abbreviation in square brackets inside parenthetical citation.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= TAB 2: FOUR INTERACTIVE PRACTICE LABS ================= -->
+        <section id="sec-activities" class="tab-content hidden space-y-8">
+
+            <!-- Activity Header -->
+            <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                <h2 class="text-2xl font-bold text-brand-900 mb-1">APA 7th Interactive Practice Labs</h2>
+                <p class="text-xs sm:text-sm text-slate-600">Complete all four activity labs below to earn points toward your overall report certificate.</p>
+            </div>
+
+            <!-- LAB 1: Fill in the Blanks / Citation Builder -->
+            <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-200 pb-3">
+                    <h3 class="text-lg font-bold text-brand-900 flex items-center">
+                        <i class="fa-solid fa-pen-ruler text-amber-500 mr-2"></i> Lab 1: Citation Element Completion (5 Points)
+                    </h3>
+                    <span id="badge-lab1" class="text-xs px-2.5 py-1 rounded-full bg-slate-100 font-semibold text-slate-600">Not Submitted</span>
+                </div>
+
+                <form id="form-lab1" onsubmit="event.preventDefault(); evaluateLab1();" class="space-y-4 text-xs sm:text-sm">
+                    <!-- Q1 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                        <p class="font-semibold text-slate-800">1. Complete the parenthetical citation for 2 authors (Alwis and Perera, 2025):</p>
+                        <p class="font-mono text-slate-700">
+                            Digital learning environments enhance learner engagement (Alwis 
+                            <input type="text" id="l1-q1" class="w-16 px-2 py-1 border border-slate-300 rounded font-mono text-center text-brand-800" placeholder="symbol"> 
+                            Perera, 2025).
+                        </p>
+                        <p class="text-[11px] text-slate-500">Hint: Type the correct ampersand or word used inside brackets.</p>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                        <p class="font-semibold text-slate-800">2. Complete the narrative citation for 3 authors (Silva, De Silva, &amp; Fernando, 2024):</p>
+                        <p class="font-mono text-slate-700">
+                            According to Silva 
+                            <input type="text" id="l1-q2" class="w-24 px-2 py-1 border border-slate-300 rounded font-mono text-center text-brand-800" placeholder="et al."> 
+                            (2024), early childhood education requires structured play.
+                        </p>
+                        <p class="text-[11px] text-slate-500">Hint: Type the Latin abbreviation with exact punctuation (e.g. et al.).</p>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                        <p class="font-semibold text-slate-800">3. Complete the direct quote page reference from page 14 of Alwis (2026):</p>
+                        <p class="font-mono text-slate-700">
+                            "Audio-rich tasks improve vocabulary retention" (Alwis, 2026, 
+                            <input type="text" id="l1-q3" class="w-20 px-2 py-1 border border-slate-300 rounded font-mono text-center text-brand-800" placeholder="p. 14">).
+                        </p>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                        <p class="font-semibold text-slate-800">4. Correct DOI Link Prefix:</p>
+                        <p class="font-mono text-slate-700">
+                            All DOIs in APA 7th must start with: 
+                            <input type="text" id="l1-q4" class="w-48 px-2 py-1 border border-slate-300 rounded font-mono text-brand-800" placeholder="https://doi.org/">10.1093/elt/ccac041
+                        </p>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                        <p class="font-semibold text-slate-800">5. First parenthetical citation for World Health Organization (2018):</p>
+                        <p class="font-mono text-slate-700">
+                            Early intervention is critical (World Health Organization [
+                            <input type="text" id="l1-q5" class="w-20 px-2 py-1 border border-slate-300 rounded font-mono text-center text-brand-800" placeholder="ABBR">], 2018).
+                        </p>
+                    </div>
+
+                    <button type="submit" class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 px-5 rounded-lg shadow text-xs flex items-center">
+                        <i class="fa-solid fa-circle-check mr-2"></i> Submit Lab 1 Answers
+                    </button>
+                </form>
+                <div id="fb-lab1" class="hidden p-4 rounded-lg text-xs space-y-2"></div>
+            </div>
+
+            <!-- LAB 2: Reference List Error Spotter -->
+            <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-200 pb-3">
+                    <h3 class="text-lg font-bold text-brand-900 flex items-center">
+                        <i class="fa-solid fa-bug text-rose-500 mr-2"></i> Lab 2: Reference List Error Spotter (4 Points)
+                    </h3>
+                    <span id="badge-lab2" class="text-xs px-2.5 py-1 rounded-full bg-slate-100 font-semibold text-slate-600">Not Submitted</span>
+                </div>
+                <p class="text-xs text-slate-600">Identify the specific error in each of the given reference entries below.</p>
+
+                <form id="form-lab2" onsubmit="event.preventDefault(); evaluateLab2();" class="space-y-4 text-xs sm:text-sm">
+                    
+                    <!-- Entry 1 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                        <p class="font-serif italic text-slate-800">
+                            Cameron, L. (2001). <em>Teaching Languages to Young Learners</em>. Cambridge, UK: Cambridge University Press.
+                        </p>
+                        <label class="block font-semibold text-slate-700">What are the TWO APA 7th errors in this book reference?</label>
+                        <select id="l2-q1" class="w-full p-2 border border-slate-300 rounded bg-white text-xs">
+                            <option value="">-- Select Error Diagnosis --</option>
+                            <option value="correct">A) Title should be sentence case AND publisher location (Cambridge, UK) must be omitted.</option>
+                            <option value="err1">B) Author name should be fully spelled out as Lynne Cameron.</option>
+                            <option value="err2">C) Book titles should never be italicized in APA 7th.</option>
+                        </select>
+                    </div>
+
+                    <!-- Entry 2 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                        <p class="font-serif italic text-slate-800">
+                            Ellis, G. (2023). Languages in the primary classroom. <em>ELT Journal</em>, 77(2), 202-212. doi:10.1093/elt/ccac041.
+                        </p>
+                        <label class="block font-semibold text-slate-700">What is wrong with the DOI formatting in this entry?</label>
+                        <select id="l2-q2" class="w-full p-2 border border-slate-300 rounded bg-white text-xs">
+                            <option value="">-- Select Error Diagnosis --</option>
+                            <option value="err1">A) DOIs should not be included in journal references.</option>
+                            <option value="correct">B) It uses the old "doi:" label AND adds an incorrect trailing full stop at the end.</option>
+                            <option value="err2">C) The journal title should be in sentence case.</option>
+                        </select>
+                    </div>
+
+                    <!-- Entry 3 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                        <p class="font-serif italic text-slate-800">
+                            Silva, A., Perera, B., &amp; Alwis, C. et al. (2024). Digital pedagogy. <em>Journal of Pedagogy</em>, 12(1), 45-50.
+                        </p>
+                        <label class="block font-semibold text-slate-700">What is the error in author listing for reference lists?</label>
+                        <select id="l2-q3" class="w-full p-2 border border-slate-300 rounded bg-white text-xs">
+                            <option value="">-- Select Error Diagnosis --</option>
+                            <option value="err1">A) You must use et al. for all references with more than 2 authors.</option>
+                            <option value="correct">B) Never use "et al." in reference lists for 3 authors! List all authors up to 20.</option>
+                            <option value="err2">C) Year of publication should come after the journal name.</option>
+                        </select>
+                    </div>
+
+                    <!-- Entry 4 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                        <p class="font-serif italic text-slate-800">
+                            UNICEF Sri Lanka. (2026). Transforming English language learning into a digital adventure. Retrieved February 10, 2026, from https://www.unicef.org/srilanka/...
+                        </p>
+                        <label class="block font-semibold text-slate-700">What is unnecessary in this webpage reference in APA 7th?</label>
+                        <select id="l2-q4" class="w-full p-2 border border-slate-300 rounded bg-white text-xs">
+                            <option value="">-- Select Error Diagnosis --</option>
+                            <option value="err1">A) Webpage titles must be in Title Case.</option>
+                            <option value="correct">B) "Retrieved February 10, 2026, from" is unnecessary unless the content changes frequently.</option>
+                            <option value="err2">C) Organizational authors cannot be listed in reference entries.</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 px-5 rounded-lg shadow text-xs flex items-center">
+                        <i class="fa-solid fa-circle-check mr-2"></i> Submit Lab 2 Answers
+                    </button>
+                </form>
+                <div id="fb-lab2" class="hidden p-4 rounded-lg text-xs space-y-2"></div>
+            </div>
+
+            <!-- LAB 3: Interactive Citation Matching -->
+            <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-200 pb-3">
+                    <h3 class="text-lg font-bold text-brand-900 flex items-center">
+                        <i class="fa-solid fa-[#0284c7] fa-puzzle-piece text-emerald-500 mr-2"></i> Lab 3: Match Citation Snippet to Rule (4 Points)
+                    </h3>
+                    <span id="badge-lab3" class="text-xs px-2.5 py-1 rounded-full bg-slate-100 font-semibold text-slate-600">Not Submitted</span>
+                </div>
+
+                <form id="form-lab3" onsubmit="event.preventDefault(); evaluateLab3();" class="space-y-4 text-xs sm:text-sm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                            <p class="font-mono text-brand-800 font-bold">Snippet 1: (World Health Organization [WHO], 2018)</p>
+                            <select id="l3-q1" class="w-full p-2 border border-slate-300 rounded bg-white text-xs">
+                                <option value="">-- Match Rule --</option>
+                                <option value="m1">First parenthetical citation for an organization with an acronym</option>
+                                <option value="m2">Narrative citation for 2 authors</option>
+                                <option value="m3">In-text parenthetical quote with page number</option>
+                                <option value="m4">Parenthetical citation for 3 or more authors</option>
+                            </select>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                            <p class="font-mono text-brand-800 font-bold">Snippet 2: Cameron and Zhao (2022) stated...</p>
+                            <select id="l3-q2" class="w-full p-2 border border-slate-300 rounded bg-white text-xs">
+                                <option value="">-- Match Rule --</option>
+                                <option value="m1">First parenthetical citation for an organization with an acronym</option>
+                                <option value="m2">Narrative citation for 2 authors</option>
+                                <option value="m3">In-text parenthetical quote with page number</option>
+                                <option value="m4">Parenthetical citation for 3 or more authors</option>
+                            </select>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                            <p class="font-mono text-brand-800 font-bold">Snippet 3: (Silva et al., 2024)</p>
+                            <select id="l3-q3" class="w-full p-2 border border-slate-300 rounded bg-white text-xs">
+                                <option value="">-- Match Rule --</option>
+                                <option value="m1">First parenthetical citation for an organization with an acronym</option>
+                                <option value="m2">Narrative citation for 2 authors</option>
+                                <option value="m3">In-text parenthetical quote with page number</option>
+                                <option value="m4">Parenthetical citation for 3 or more authors</option>
+                            </select>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                            <p class="font-mono text-brand-800 font-bold">Snippet 4: (Alwis, 2026, p. 104)</p>
+                            <select id="l3-q4" class="w-full p-2 border border-slate-300 rounded bg-white text-xs">
+                                <option value="">-- Match Rule --</option>
+                                <option value="m1">First parenthetical citation for an organization with an acronym</option>
+                                <option value="m2">Narrative citation for 2 authors</option>
+                                <option value="m3">In-text parenthetical quote with page number</option>
+                                <option value="m4">Parenthetical citation for 3 or more authors</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 px-5 rounded-lg shadow text-xs flex items-center">
+                        <i class="fa-solid fa-circle-check mr-2"></i> Submit Lab 3 Answers
+                    </button>
+                </form>
+                <div id="fb-lab3" class="hidden p-4 rounded-lg text-xs space-y-2"></div>
+            </div>
+
+        </section>
+
+
+        <!-- ================= TAB 3: 10-QUESTION FINAL ASSESSMENT ================= -->
+        <section id="sec-quiz" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-200 pb-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-brand-900">APA 7th Final Competency Quiz</h2>
+                        <p class="text-xs sm:text-sm text-slate-600">Complete all 10 questions to test overall mastery across books, journals, websites, and in-text citations.</p>
+                    </div>
+                    <div class="mt-3 sm:mt-0 bg-brand-50 border border-brand-200 px-4 py-2 rounded-xl text-center">
+                        <span class="text-xs font-semibold text-brand-800 uppercase block">Quiz Score</span>
+                        <span id="quiz-score-badge" class="text-xl font-black text-brand-700">0 / 10</span>
+                    </div>
+                </div>
+
+                <form id="form-quiz" onsubmit="event.preventDefault(); evaluateQuiz();" class="space-y-6">
+                    
+                    <!-- Q1 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2" id="qbox-1">
+                        <p class="font-bold text-slate-800 text-xs sm:text-sm">1. How should a work by 4 authors (Silva, Perera, Fernando, &amp; Alwis, 2024) be cited in-text the VERY FIRST time in APA 7th?</p>
+                        <div class="space-y-1 text-xs pl-2">
+                            <label class="block"><input type="radio" name="q1" value="A"> A) (Silva, Perera, Fernando, &amp; Alwis, 2024)</label>
+                            <label class="block"><input type="radio" name="q1" value="B"> B) (Silva et. al, 2024)</label>
+                            <label class="block"><input type="radio" name="q1" value="C"> C) (Silva et al., 2024)</label>
+                            <label class="block"><input type="radio" name="q1" value="D"> D) Silva and others (2024)</label>
+                        </div>
+                        <div id="qfb-1" class="hidden text-xs p-2 rounded mt-2"></div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2" id="qbox-2">
+                        <p class="font-bold text-slate-800 text-xs sm:text-sm">2. Which conjunction/symbol is used between two authors' names inside parenthetical in-text citations?</p>
+                        <div class="space-y-1 text-xs pl-2">
+                            <label class="block"><input type="radio" name="q2" value="A"> A) The word "and" (e.g. Alwis and Perera, 2026)</label>
+                            <label class="block"><input type="radio" name="q2" value="B"> B) The ampersand symbol "&amp;" (e.g. Alwis &amp; Perera, 2026)</label>
+                            <label class="block"><input type="radio" name="q2" value="C"> C) A slash "/" (e.g. Alwis/Perera, 2026)</label>
+                        </div>
+                        <div id="qfb-2" class="hidden text-xs p-2 rounded mt-2"></div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2" id="qbox-3">
+                        <p class="font-bold text-slate-800 text-xs sm:text-sm">3. True or False: Publisher location (City, State/Country) must be included in book references in APA 7th.</p>
+                        <div class="space-y-1 text-xs pl-2">
+                            <label class="block"><input type="radio" name="q3" value="True"> True</label>
+                            <label class="block"><input type="radio" name="q3" value="False"> False</label>
+                        </div>
+                        <div id="qfb-3" class="hidden text-xs p-2 rounded mt-2"></div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2" id="qbox-4">
+                        <p class="font-bold text-slate-800 text-xs sm:text-sm">4. How are article titles formatted in Reference List entries in APA 7th?</p>
+                        <div class="space-y-1 text-xs pl-2">
+                            <label class="block"><input type="radio" name="q4" value="A"> A) Title Case (Capitalize Every Major Word) and inside quotation marks</label>
+                            <label class="block"><input type="radio" name="q4" value="B"> B) Sentence Case (Capitalize only 1st word, 1st word after colon, and proper nouns)</label>
+                            <label class="block"><input type="radio" name="q4" value="C"> C) All UPPERCASE letters</label>
+                        </div>
+                        <div id="qfb-4" class="hidden text-xs p-2 rounded mt-2"></div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2" id="qbox-5">
+                        <p class="font-bold text-slate-800 text-xs sm:text-sm">5. Which of the following DOI formats strictly follows APA 7th standards?</p>
+                        <div class="space-y-1 text-xs pl-2">
+                            <label class="block"><input type="radio" name="q5" value="A"> A) doi:10.1093/elt/ccac041</label>
+                            <label class="block"><input type="radio" name="q5" value="B"> B) https://doi.org/10.1093/elt/ccac041</label>
+                            <label class="block"><input type="radio" name="q5" value="C"> C) https://dx.doi.org/10.1093/elt/ccac041.</label>
+                        </div>
+                        <div id="qfb-5" class="hidden text-xs p-2 rounded mt-2"></div>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2" id="qbox-6">
+                        <p class="font-bold text-slate-800 text-xs sm:text-sm">6. When citing a direct quote, what element must be included in the in-text citation?</p>
+                        <div class="space-y-1 text-xs pl-2">
+                            <label class="block"><input type="radio" name="q6" value="A"> A) Page number (p. xx) or paragraph number (para. xx)</label>
+                            <label class="block"><input type="radio" name="q6" value="B"> B) Full book title</label>
+                            <label class="block"><input type="radio" name="q6" value="C"> C) Publisher name</label>
+                        </div>
+                        <div id="qfb-6" class="hidden text-xs p-2 rounded mt-2"></div>
+                    </div>
+
+                    <!-- Q7 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2" id="qbox-7">
+                        <p class="font-bold text-slate-800 text-xs sm:text-sm">7. In a Reference List, how are entries formatted structurally?</p>
+                        <div class="space-y-1 text-xs pl-2">
+                            <label class="block"><input type="radio" name="q7" value="A"> A) Bulleted list with standard left alignment</label>
+                            <label class="block"><input type="radio" name="q7" value="B"> B) Hanging indent (1st line flush left, subsequent lines indented 0.5 in)</label>
+                            <label class="block"><input type="radio" name="q7" value="C"> C) Right aligned text</label>
+                        </div>
+                        <div id="qfb-7" class="hidden text-xs p-2 rounded mt-2"></div>
+                    </div>
+
+                    <!-- Q8 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2" id="qbox-8">
+                        <p class="font-bold text-slate-800 text-xs sm:text-sm">8. Up to how many author names should be explicitly listed in a Reference List entry before using an ellipsis (...)?</p>
+                        <div class="space-y-1 text-xs pl-2">
+                            <label class="block"><input type="radio" name="q8" value="A"> A) 3 authors</label>
+                            <label class="block"><input type="radio" name="q8" value="B"> B) 7 authors</label>
+                            <label class="block"><input type="radio" name="q8" value="C"> C) 20 authors</label>
+                        </div>
+                        <div id="qfb-8" class="hidden text-xs p-2 rounded mt-2"></div>
+                    </div>
+
+                    <!-- Q9 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2" id="qbox-9">
+                        <p class="font-bold text-slate-800 text-xs sm:text-sm">9. When referencing a webpage from a organizational website (e.g. WHO), when is the retrieval date required?</p>
+                        <div class="space-y-1 text-xs pl-2">
+                            <label class="block"><input type="radio" name="q9" value="A"> A) Always required for all online pages</label>
+                            <label class="block"><input type="radio" name="q9" value="B"> B) Only when the contents are unarchived and designed to change over time (e.g. UpToDate, Twitter feeds)</label>
+                            <label class="block"><input type="radio" name="q9" value="C"> C) Never required under any circumstance</label>
+                        </div>
+                        <div id="qfb-9" class="hidden text-xs p-2 rounded mt-2"></div>
+                    </div>
+
+                    <!-- Q10 -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2" id="qbox-10">
+                        <p class="font-bold text-slate-800 text-xs sm:text-sm">10. In APA 7th, how is the title of a academic Journal formatted in reference entries?</p>
+                        <div class="space-y-1 text-xs pl-2">
+                            <label class="block"><input type="radio" name="q10" value="A"> A) Italicized and in Title Case</label>
+                            <label class="block"><input type="radio" name="q10" value="B"> B) Plain text in sentence case</label>
+                            <label class="block"><input type="radio" name="q10" value="C"> C) Underlined in Title Case</label>
+                        </div>
+                        <div id="qfb-10" class="hidden text-xs p-2 rounded mt-2"></div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4">
+                        <button type="submit" class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-6 rounded-xl shadow transition-all flex items-center justify-center text-xs sm:text-sm">
+                            <i class="fa-solid fa-check-double mr-2"></i> Submit &amp; Evaluate Final Quiz
+                        </button>
+                        <button type="button" onclick="resetQuiz()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center text-xs sm:text-sm">
+                            <i class="fa-solid fa-rotate-right mr-2"></i> Reset Quiz
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+
+        <!-- ================= TAB 4: PDF REPORT GENERATOR ================= -->
+        <section id="sec-pdf" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-200 pb-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-brand-900">Academic Competency &amp; PDF Report Exporter</h2>
+                        <p class="text-xs sm:text-sm text-slate-600">Enter your details to render your verified performance certificate and sample reference sheet, then export as PDF.</p>
+                    </div>
+                    <button onclick="downloadPDF()" class="mt-4 md:mt-0 bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2.5 rounded-xl shadow transition-all flex items-center text-xs sm:text-sm">
+                        <i class="fa-solid fa-file-arrow-down mr-2 text-base"></i> Export Official PDF Report
+                    </button>
+                </div>
+
+                <!-- Input Controls -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Student Full Name</label>
+                        <input type="text" id="pdf-name" value="Candidate Student" oninput="updatePDFPreview()" class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-brand-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Student ID / Index No.</label>
+                        <input type="text" id="pdf-id" value="BED/2026/7891" oninput="updatePDFPreview()" class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-brand-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Course / Specialization</label>
+                        <input type="text" id="pdf-course" value="BEd TESL & Early Childhood Education" oninput="updatePDFPreview()" class="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-brand-500">
+                    </div>
+                </div>
+
+                <!-- PRINTABLE PDF AREA -->
+                <div class="border border-slate-300 rounded-xl p-4 sm:p-8 bg-white shadow-inner overflow-x-auto">
+                    <div id="pdf-printable-area" class="max-w-4xl mx-auto p-6 bg-white text-slate-900 space-y-6">
+                        
+                        <!-- Header -->
+                        <div class="border-b-2 border-brand-900 pb-4 flex justify-between items-end">
+                            <div>
+                                <h1 class="text-xl font-bold text-brand-900 uppercase tracking-wide">APA 7th Referencing Competency Certificate</h1>
+                                <p class="text-xs text-slate-500">Issued by Higher Education Information Literacy Hub</p>
+                            </div>
+                            <div class="text-right text-xs">
+                                <p id="pdf-date" class="font-semibold text-slate-700"></p>
+                                <p class="text-emerald-700 font-bold">Status: Verified Evaluation</p>
+                            </div>
+                        </div>
+
+                        <!-- Student Details -->
+                        <div class="grid grid-cols-2 gap-4 text-xs bg-slate-50 p-4 rounded-lg border border-slate-200">
+                            <div>
+                                <p class="mb-1"><span class="font-bold text-slate-600">Candidate:</span> <span id="prev-name" class="font-semibold text-slate-900">Candidate Student</span></p>
+                                <p><span class="font-bold text-slate-600">Student ID:</span> <span id="prev-id" class="font-semibold text-slate-900">BED/2026/7891</span></p>
+                            </div>
+                            <div>
+                                <p class="mb-1"><span class="font-bold text-slate-600">Specialization:</span> <span id="prev-course">BEd TESL &amp; Early Childhood</span></p>
+                                <p><span class="font-bold text-slate-600">Total Score Achieved:</span> <span id="prev-score" class="font-bold text-brand-700">0 / 23 (0%)</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Score breakdown table -->
+                        <div class="space-y-2">
+                            <h3 class="font-bold text-xs uppercase text-slate-600 tracking-wider">Evaluation Breakdown Across Labs</h3>
+                            <table class="w-full text-left text-xs border border-slate-200 border-collapse">
+                                <thead class="bg-slate-100 text-slate-700">
+                                    <tr>
+                                        <th class="p-2 border border-slate-200">Assessment Unit</th>
+                                        <th class="p-2 border border-slate-200">Max Points</th>
+                                        <th class="p-2 border border-slate-200">Earned Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200">Lab 1: Fill-in-Blanks Citation Builder</td>
+                                        <td class="p-2 border border-slate-200">5</td>
+                                        <td class="p-2 border border-slate-200 font-bold" id="pdf-l1">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200">Lab 2: Reference Error Spotter</td>
+                                        <td class="p-2 border border-slate-200">4</td>
+                                        <td class="p-2 border border-slate-200 font-bold" id="pdf-l2">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200">Lab 3: Citation Type Matching</td>
+                                        <td class="p-2 border border-slate-200">4</td>
+                                        <td class="p-2 border border-slate-200 font-bold" id="pdf-l3">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200">Final Quiz (10 Questions)</td>
+                                        <td class="p-2 border border-slate-200">10</td>
+                                        <td class="p-2 border border-slate-200 font-bold" id="pdf-q">0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Verified APA Reference Page Example -->
+                        <div class="space-y-3 pt-4">
+                            <h2 class="text-center font-serif font-bold text-base text-slate-900 border-b border-slate-200 pb-1">Sample Formatted Reference List (APA 7th)</h2>
+                            <div class="font-serif text-xs leading-relaxed space-y-3 text-slate-800">
+                                <p class="hanging-indent">
+                                    Cameron, L. (2001). <em>Teaching languages to young learners</em>. Cambridge University Press.
+                                </p>
+                                <p class="hanging-indent">
+                                    Ellis, G. (2023). Languages in the primary classroom: Developing young learners' agency. <em>ELT Journal</em>, 77(2), 202-212. https://doi.org/10.1093/elt/ccac041
+                                </p>
+                                <p class="hanging-indent">
+                                    UNICEF Sri Lanka. (2026, February 10). <em>Transforming English language learning into a digital adventure</em>. https://www.unicef.org/srilanka/stories/transforming-english-language-learning-digital-adventure
+                                </p>
+                                <p class="hanging-indent">
+                                    World Health Organization. (2018). <em>Nurturing care for early childhood development: A framework for helping children survive and thrive to transform health and human potential</em>. https://www.who.int/publications/i/item/9789241514064
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="pt-6 border-t border-slate-200 text-[10px] text-slate-400 flex justify-between items-center">
+                            <span>APA 7th Edition Verification • Academic Research Skills</span>
+                            <span>Page 1 of 1</span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-12 border-t border-slate-800 no-print">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p>APA 7th Edition Referencing &amp; In-Text Citation Interactive Learning Suite</p>
+            <p class="text-slate-500">Designed for Education Undergraduate &amp; Postgraduate Research Programs</p>
+        </div>
+    </footer>
+
+    <!-- JS Application Logic -->
+    <script>
+        // Analytics state
+        let scores = {
+            lab1: 0,
+            lab2: 0,
+            lab3: 0,
+            quiz: 0
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const today = new Date();
+            document.getElementById('pdf-date').innerText = today.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+            updateGlobalScore();
+        });
+
+        // Tab Switcher
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-700', 'text-white', 'shadow');
+                btn.classList.add('text-brand-100', 'hover:bg-brand-800');
+            });
+
+            document.getElementById(`sec-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            activeBtn.classList.add('bg-brand-700', 'text-white', 'shadow');
+            activeBtn.classList.remove('text-brand-100', 'hover:bg-brand-800');
+        }
+
+        function toggleJargon(id) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById(`icon-${id}`);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+            } else {
+                el.classList.add('hidden');
+                icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            }
+        }
+
+        function updateGlobalScore() {
+            document.getElementById('score-act1').innerText = `${scores.quiz}/10`;
+            document.getElementById('score-act2').innerText = `${scores.lab1}/5`;
+            document.getElementById('score-act3').innerText = `${scores.lab2}/4`;
+            document.getElementById('score-act4').innerText = `${scores.lab3}/4`;
+
+            const total = scores.lab1 + scores.lab2 + scores.lab3 + scores.quiz;
+            const pct = Math.round((total / 23) * 100);
+            document.getElementById('total-score-display').innerText = `${total} / 23 (${pct}%)`;
+
+            // Update PDF view
+            document.getElementById('pdf-l1').innerText = `${scores.lab1} / 5`;
+            document.getElementById('pdf-l2').innerText = `${scores.lab2} / 4`;
+            document.getElementById('pdf-l3').innerText = `${scores.lab3} / 4`;
+            document.getElementById('pdf-q').innerText = `${scores.quiz} / 10`;
+            document.getElementById('prev-score').innerText = `${total} / 23 (${pct}%)`;
+        }
+
+        // EVALUATE LAB 1
+        function evaluateLab1() {
+            let pts = 0;
+            const q1 = document.getElementById('l1-q1').value.trim();
+            const q2 = document.getElementById('l1-q2').value.trim().toLowerCase();
+            const q3 = document.getElementById('l1-q3').value.trim().toLowerCase();
+            const q4 = document.getElementById('l1-q4').value.trim().toLowerCase();
+            const q5 = document.getElementById('l1-q5').value.trim().toUpperCase();
+
+            if (q1 === '&') pts++;
+            if (q2 === 'et al.' || q2 === 'et al') pts++;
+            if (q3 === 'p. 14' || q3 === 'p.14') pts++;
+            if (q4 === 'https://doi.org/' || q4 === 'https://doi.org') pts++;
+            if (q5 === 'WHO') pts++;
+
+            scores.lab1 = pts;
+            const badge = document.getElementById('badge-lab1');
+            badge.className = "text-xs px-2.5 py-1 rounded-full font-semibold bg-emerald-100 text-emerald-800";
+            badge.innerText = `Score: ${pts}/5`;
+
+            const fb = document.getElementById('fb-lab1');
+            fb.classList.remove('hidden');
+            fb.className = "p-4 rounded-lg text-xs space-y-1 bg-slate-100 border border-slate-300 text-slate-800";
+            fb.innerHTML = `<strong>Lab 1 Results:</strong> You earned ${pts}/5 points.<br>
+            • Q1: Ampersand <code>&amp;</code> is used inside brackets.<br>
+            • Q2: <code>et al.</code> is used for 3+ authors.<br>
+            • Q3: <code>p. 14</code> is required for direct quotes.<br>
+            • Q4: DOIs start with <code>https://doi.org/</code>.<br>
+            • Q5: <code>WHO</code> introduces the abbreviation in brackets.`;
+
+            updateGlobalScore();
+        }
+
+        // EVALUATE LAB 2
+        function evaluateLab2() {
+            let pts = 0;
+            if (document.getElementById('l2-q1').value === 'correct') pts++;
+            if (document.getElementById('l2-q2').value === 'correct') pts++;
+            if (document.getElementById('l2-q3').value === 'correct') pts++;
+            if (document.getElementById('l2-q4').value === 'correct') pts++;
+
+            scores.lab2 = pts;
+            const badge = document.getElementById('badge-lab2');
+            badge.className = "text-xs px-2.5 py-1 rounded-full font-semibold bg-emerald-100 text-emerald-800";
+            badge.innerText = `Score: ${pts}/4`;
+
+            const fb = document.getElementById('fb-lab2');
+            fb.classList.remove('hidden');
+            fb.className = "p-4 rounded-lg text-xs space-y-1 bg-slate-100 border border-slate-300 text-slate-800";
+            fb.innerHTML = `<strong>Lab 2 Results:</strong> You earned ${pts}/4 points.<br>
+            All selected diagnoses have been verified against APA 7th standards!`;
+
+            updateGlobalScore();
+        }
+
+        // EVALUATE LAB 3
+        function evaluateLab3() {
+            let pts = 0;
+            if (document.getElementById('l3-q1').value === 'm1') pts++;
+            if (document.getElementById('l3-q2').value === 'm2') pts++;
+            if (document.getElementById('l3-q3').value === 'm4') pts++;
+            if (document.getElementById('l3-q4').value === 'm3') pts++;
+
+            scores.lab3 = pts;
+            const badge = document.getElementById('badge-lab3');
+            badge.className = "text-xs px-2.5 py-1 rounded-full font-semibold bg-emerald-100 text-emerald-800";
+            badge.innerText = `Score: ${pts}/4`;
+
+            const fb = document.getElementById('fb-lab3');
+            fb.classList.remove('hidden');
+            fb.className = "p-4 rounded-lg text-xs space-y-1 bg-slate-100 border border-slate-300 text-slate-800";
+            fb.innerHTML = `<strong>Lab 3 Results:</strong> You earned ${pts}/4 points matched correctly!`;
+
+            updateGlobalScore();
+        }
+
+        // EVALUATE FINAL QUIZ
+        function evaluateQuiz() {
+            let pts = 0;
+            const answers = { q1: 'C', q2: 'B', q3: 'False', q4: 'B', q5: 'B', q6: 'A', q7: 'B', q8: 'C', q9: 'B', q10: 'A' };
+
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`)?.value;
+                const fbBox = document.getElementById(`qfb-${i}`);
+                fbBox.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800');
+
+                if (selected === answers[`q${i}`]) {
+                    pts++;
+                    fbBox.classList.add('bg-emerald-100', 'text-emerald-800');
+                    fbBox.innerHTML = `<i class="fa-solid fa-check-circle"></i> Correct!`;
+                } else {
+                    fbBox.classList.add('bg-rose-100', 'text-rose-800');
+                    fbBox.innerHTML = `<i class="fa-solid fa-times-circle"></i> Incorrect. Correct Answer: <strong>${answers[`q${i}`]}</strong>`;
+                }
+            }
+
+            scores.quiz = pts;
+            document.getElementById('quiz-score-badge').innerText = `${pts} / 10`;
+            updateGlobalScore();
+        }
+
+        function resetQuiz() {
+            document.getElementById('form-quiz').reset();
+            scores.quiz = 0;
+            document.getElementById('quiz-score-badge').innerText = `0 / 10`;
+            for (let i = 1; i <= 10; i++) {
+                document.getElementById(`qfb-${i}`).classList.add('hidden');
+            }
+            updateGlobalScore();
+        }
+
+        function updatePDFPreview() {
+            document.getElementById('prev-name').innerText = document.getElementById('pdf-name').value || 'Candidate Student';
+            document.getElementById('prev-id').innerText = document.getElementById('pdf-id').value || 'BED/2026/7891';
+            document.getElementById('prev-course').innerText = document.getElementById('pdf-course').value || 'BEd TESL & Early Childhood';
+        }
+
+        function downloadPDF() {
+            updatePDFPreview();
+            const element = document.getElementById('pdf-printable-area');
+            const opt = {
+                margin:       [0.4, 0.4, 0.4, 0.4],
+                filename:     'APA7_Academic_Competency_Report.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+</body>
+</html>
